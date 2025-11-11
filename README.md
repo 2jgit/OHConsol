@@ -2,7 +2,7 @@
 Web TFTP Server / Serial Console - OH?!?
 
 
-Tired of figuring out how your going to tftp that new firmware image to a device? Tired of misspelling files names or losing track of what that image.out file realy is? Tired of boucning from tftp server to console?
+Tired of figuring out how your going to tftp that new firmware image to a device? Tired of misspelling files names or losing track of what that image.out file really is? Tired of boucning from some tftp server to some other serial console?
 
 
 Simply upload your file with a description (optional) and activate it. That file is now ready for a tftp download as image.out. 
@@ -10,7 +10,7 @@ Simply upload your file with a description (optional) and activate it. That file
 But wait?!? I need console access... Keep reading
 ![alt text](https://github.com/2jgit/OHConsol/blob/main/files/TFTP%20Upload.jpg)
 
-Pass your USB Serial Cable into fortifirm - /dev/ttyUSB0 (You'll need to confirm this on your host via dmesg and update docker-compose.yml accordingly)
+Pass your USB Serial Cable into OHConsol - /dev/ttyUSB0 (You'll need to confirm this on your host via dmesg and update docker-compose.yml accordingly)
 Now you have a web serial terminal.
 ![alt text](https://github.com/2jgit/OHConsol/blob/main/files/Serial%20Terminal.jpg)
 
@@ -19,6 +19,11 @@ Adjust below docker compose file as needed.
 
 ## Current Version fails if USB device passthrough is not configured ##
 ## V2 will allow option to disable for TFTP Service only ##
+
+
+Once delpoyed 
+ - access web console via http://localhost:8080 (http://X.X.X.X:8080)
+ - TFTP Access via udp/69
 
 ```
 services:
