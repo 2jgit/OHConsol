@@ -54,7 +54,7 @@ services:
       - "/dev/ttyUSB0:/dev/ttyUSB0" # change host side to your USB device mapping
     privileged: true   # required for serial access
     environment:
-      DB_HOST: fortifirm_db
+      DB_HOST: ohconsol_db
       DB_NAME: fileapp
       DB_USER: fileapp
       DB_PASS: fileapp_pw
