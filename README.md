@@ -37,7 +37,7 @@ services:
       - host
 
   ohconsol_web:
-    image: 2jdock/2jpub:ohconsol:latest
+    image: 2jdock/2jpub:ohconsol
     container_name: ohconsol_web
     depends_on:
       - ohconsol_db
