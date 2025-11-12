@@ -17,8 +17,8 @@ Now you have a web serial terminal.
 
 Adjust below docker compose file as needed. 
 
-## Current Version fails if USB device passthrough is not configured ##
-## V2 will allow option to disable for TFTP Service only ##
+## If you wish to only use the tftp web server and do not have a usb serial device to passthrough ##
+## Comment out the device section and set SERIAL_ENABLED: false in the env variables for ohconsol_web ##
 
 
 Once delpoyed 
@@ -50,6 +50,10 @@ services:
       - "8080:80"        # Access webapp on host:8080
       - "8081:8081"     # required for serial websocket
       - "69:69/udp"    # TFTP UDP port forwarded to host
+
+    ### Serial console is enabled by default. If you wish to only run tftp web service
+    ### comment out "devices:" and " - "/dev/ttyUSB0:/dev/ttyUSB0" "
+    ### and set SERIAL_ENABLED: false in the env below
     devices:
       - "/dev/ttyUSB0:/dev/ttyUSB0" # change host side to your USB device mapping
     privileged: true   # required for serial access
@@ -58,6 +62,7 @@ services:
       DB_NAME: fileapp
       DB_USER: fileapp
       DB_PASS: fileapp_pw
+      SERIAL_ENABLED: true
     volumes:
       - uploads:/var/www/html/uploads
       - tftp:/mnt/tftp
@@ -75,4 +80,5 @@ volumes:
 networks:
   host:
     driver: bridge
+
 ```
