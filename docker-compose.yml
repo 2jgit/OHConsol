@@ -22,6 +22,10 @@ services:
       - "8080:80"        # Access webapp on host:8080
       - "8081:8081"     # required for serial websocket
       - "69:69/udp"    # TFTP UDP port forwarded to host
+
+    ### Serial console is enabled by default. If you wish to only run tftp web service
+    ### comment out "devices:" and " - "/dev/ttyUSB0:/dev/ttyUSB0" "
+    ### and set SERIAL_ENABLED: false in the env below
     devices:
       - "/dev/ttyUSB0:/dev/ttyUSB0" # change host side to your USB device mapping
     privileged: true   # required for serial access
@@ -30,6 +34,7 @@ services:
       DB_NAME: fileapp
       DB_USER: fileapp
       DB_PASS: fileapp_pw
+      SERIAL_ENABLED: true
     volumes:
       - uploads:/var/www/html/uploads
       - tftp:/mnt/tftp
